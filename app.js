@@ -7,6 +7,8 @@ var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var expressValidator = require('express-validator');
 var proxy = require('express-http-proxy');
+var https = require('https');
+var fs = require('fs');
 
 //Log
 var log = require('./utils/logger.js').Logger;
@@ -33,7 +35,6 @@ app.use(require('express-session')({
 }));
 app.use(expressValidator());
 
-
 // ROUTES, GET AND POST ////////////////////////////////////////////////
 
 app.get('/', function(req, res, next) {
@@ -42,3 +43,12 @@ app.get('/', function(req, res, next) {
 
 app.listen(config.web_port, config.web_host);
 log("Web server listening: " + config.web_host + ":" + config.web_port);
+
+var options = {
+    key  : fs.readFileSync('ssl/key.pem'),
+    ca   : fs.readFileSync('ssl/csr.pem'),
+    cert : fs.readFileSync('ssl/cert.pem')
+}
+
+https.createServer(options, app).listen(config.web_secure_port, config.web_host);
+log("Web secure server listening: " + config.web_host + ":" + config.web_secure_port);

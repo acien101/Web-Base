@@ -13,6 +13,7 @@
     "express-session": "^1.15.4",
     "express-validator": "^3.2.1",
     "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "method-override": "^1.0.0"
   }
 }
