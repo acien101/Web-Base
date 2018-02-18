@@ -1,0 +1,24 @@
+{
+  "name": "asdf",
+  "description": "asdf",
+  "main": "app.js",
+  "authors": [
+    "amil101"
+  ],
+  "license": "",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "angular-bootstrap": "^2.5.0",
+    "font-awesome": "^4.7.0"
+  }
+}
